@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zenith - AI-Powered Job Matching</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">Zenith</div>
+            <div class="nav-links">
+                <a href="#home" class="active">Home</a>
+                <a href="#profile">Profile</a>
+                <a href="#skills-enhancer">Skills Enhancer</a>
+                <a href="#customized-resumes">Resume Enhancer</a>
+                <a href="#team">Our Team</a>
+            </div>
+            <div class="nav-right">
+                <button class="btn btn-logout">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </button>
+                <button class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home" class="section active">
+        <div class="container">
+            <div class="hero">
+                <h1>Find Your Perfect Job Match</h1>
+                <p>Our AI analyzes your skills, preferences, and career goals to match you with the best opportunities</p>
+            </div>
+
+            <!-- Job Search and Filters -->
+            <div class="search-filters">
+                <div class="search-bar">
+                    <input type="text" id="jobSearch" placeholder="Search jobs by title, company, or keywords">
+                    <button class="btn btn-primary">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+                <div class="filter-options">
+                    <select id="locationFilter">
+                        <option value="">All Locations</option>
+                        <option value="remote">Remote</option>
+                        <option value="new-york">New York</option>
+                        <option value="san-francisco">San Francisco</option>
+                        <option value="chicago">Chicago</option>
+                    </select>
+                    <select id="jobTypeFilter">
+                        <option value="">All Job Types</option>
+                        <option value="full-time">Full Time</option>
+                        <option value="part-time">Part Time</option>
+                        <option value="contract">Contract</option>
+                    </select>
+                    <select id="experienceFilter">
+                        <option value="">All Experience Levels</option>
+                        <option value="entry">Entry Level</option>
+                        <option value="mid">Mid Level</option>
+                        <option value="senior">Senior Level</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="job-matches">
+                <div class="welcome-message">
+                    <h3>Welcome, John Doe!</h3>
+                    <p>Here are your personalized job matches based on your skills and preferences.</p>
+                </div>
+                <div class="matching-criteria">
+                    <h3>Matching Criteria</h3>
+                    <div class="criteria-grid">
+                        <div class="criteria-item">
+                            <i class="fas fa-code"></i>
+                            <h4>Skills Match</h4>
+                            <p>Analyzes your technical and soft skills against job requirements</p>
+                        </div>
+                        <div class="criteria-item">
+                            <i class="fas fa-bullseye"></i>
+                            <h4>Career Goals</h4>
+                            <p>Matches opportunities that align with your career aspirations</p>
+                        </div>
+                        <div class="criteria-item">
+                            <i class="fas fa-heart"></i>
+                            <h4>Preferences</h4>
+                            <p>Considers your location, work style, and company culture preferences</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="job-grid" id="jobGrid">
+                    <div class="job-card" data-platform="linkedin">
+                        <div class="platform-tag">
+                            <i class="fab fa-linkedin"></i>
+                            <span>LinkedIn</span>
+                        </div>
+                        <h3>Senior Full Stack Developer</h3>
+                        <p class="company">TechCorp</p>
+                        <p class="location">San Francisco, CA</p>
+                        <p class="type">Full-time</p>
+                        <p class="salary">$120,000 - $150,000</p>
+                        <p class="description">Looking for an experienced full-stack developer to join our growing team. Must have experience with React, Node.js, and cloud technologies.</p>
+                        <div class="match-score">
+                            <span class="score">95% Match</span>
+                        </div>
+                        <button class="btn btn-primary">Apply Now</button>
+                    </div>
+
+                    <div class="job-card" data-platform="indeed">
+                        <div class="platform-tag">
+                            <i class="fas fa-briefcase"></i>
+                            <span>Indeed</span>
+                        </div>
+                        <h3>Frontend Developer</h3>
+                        <p class="company">Digital Solutions Inc.</p>
+                        <p class="location">Remote</p>
+                        <p class="type">Full-time</p>
+                        <p class="salary">$90,000 - $120,000</p>
+                        <p class="description">Join our team of talented frontend developers working on cutting-edge web applications. Strong React and TypeScript experience required.</p>
+                        <div class="match-score">
+                            <span class="score">88% Match</span>
+                        </div>
+                        <button class="btn btn-primary">Apply Now</button>
+                    </div>
+
+                    <div class="job-card" data-platform="glassdoor">
+                        <div class="platform-tag">
+                            <i class="fas fa-building"></i>
+                            <span>Glassdoor</span>
+                        </div>
+                        <h3>Backend Engineer</h3>
+                        <p class="company">DataSystems</p>
+                        <p class="location">New York, NY</p>
+                        <p class="type">Full-time</p>
+                        <p class="salary">$110,000 - $140,000</p>
+                        <p class="description">Seeking a backend developer with experience in Node.js, Python, and database management. Experience with microservices architecture preferred.</p>
+                        <div class="match-score">
+                            <span class="score">85% Match</span>
+                        </div>
+                        <button class="btn btn-primary">Apply Now</button>
+                    </div>
+
+                    <div class="job-card" data-platform="monster">
+                        <div class="platform-tag">
+                            <i class="fas fa-paw"></i>
+                            <span>Monster</span>
+                        </div>
+                        <h3>DevOps Engineer</h3>
+                        <p class="company">CloudTech Solutions</p>
+                        <p class="location">Austin, TX</p>
+                        <p class="type">Full-time</p>
+                        <p class="salary">$130,000 - $160,000</p>
+                        <p class="description">Looking for a DevOps engineer to help automate our deployment processes and improve our CI/CD pipeline. AWS and Docker experience required.</p>
+                        <div class="match-score">
+                            <span class="score">92% Match</span>
+                        </div>
+                        <button class="btn btn-primary">Apply Now</button>
+                    </div>
+
+                    <div class="job-card" data-platform="dice">
+                        <div class="platform-tag">
+                            <i class="fas fa-dice"></i>
+                            <span>Dice</span>
+                        </div>
+                        <h3>Mobile Developer</h3>
+                        <p class="company">AppInnovate</p>
+                        <p class="location">Seattle, WA</p>
+                        <p class="type">Full-time</p>
+                        <p class="salary">$100,000 - $130,000</p>
+                        <p class="description">Join our mobile development team working on innovative iOS and Android applications. React Native experience preferred.</p>
+                        <div class="match-score">
+                            <span class="score">87% Match</span>
+                        </div>
+                        <button class="btn btn-primary">Apply Now</button>
+                    </div>
+
+                    <div class="job-card" data-platform="careerbuilder">
+                        <div class="platform-tag">
+                            <i class="fas fa-hard-hat"></i>
+                            <span>CareerBuilder</span>
+                        </div>
+                        <h3>Full Stack Developer</h3>
+                        <p class="company">WebTech Solutions</p>
+                        <p class="location">Chicago, IL</p>
+                        <p class="type">Full-time</p>
+                        <p class="salary">$95,000 - $125,000</p>
+                        <p class="description">Looking for a full stack developer with experience in modern web technologies. Must be comfortable working in an agile environment.</p>
+                        <div class="match-score">
+                            <span class="score">90% Match</span>
+                        </div>
+                        <button class="btn btn-primary">Apply Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resume Enhancer Section -->
+    <section id="customized-resumes" class="section">
+        <div class="container">
+            <div class="resumes-header">
+                <h2>Resume Enhancer</h2>
+                <div class="resumes-stats">
+                    <div class="stat-card">
+                        <span class="stat-number" id="totalResumes">0</span>
+                        <span class="stat-label">Total Resumes</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number" id="successRate">0%</span>
+                        <span class="stat-label">Success Rate</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number" id="avgScore">0</span>
+                        <span class="stat-label">Avg. Score</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Resume Analysis Section -->
+            <div class="resume-analysis">
+                <div class="analysis-header">
+                    <h3>Resume Analysis</h3>
+                    <div class="analysis-stats">
+                        <div class="stat-card">
+                            <span class="stat-number" id="resumeScore">0</span>
+                            <span class="stat-label">Current Score</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-number" id="missingKeywordsCount">0</span>
+                            <span class="stat-label">Missing Keywords</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="analysis-content">
+                    <div class="missing-keywords" id="missingKeywords">
+                        <h4>Missing Keywords</h4>
+                        <p id="noKeywords">Your resume is complete!</p>
+                    </div>
+                    
+                    <div class="suggestions" id="suggestionsList">
+                        <h4>Improvement Suggestions</h4>
+                        <ul>
+                            <li id="noSuggestions">No suggestions available</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="applications-filters">
+                <div class="filter-group">
+                    <select id="applicationStatusFilter">
+                        <option value="all">All Applications</option>
+                        <option value="applied">Applied</option>
+                        <option value="in-review">In Review</option>
+                        <option value="interview">Interview Scheduled</option>
+                        <option value="offered">Offered</option>
+                        <option value="rejected">Rejected</option>
+                    </select>
+                    <select id="applicationSort">
+                        <option value="newest">Newest First</option>
+                        <option value="oldest">Oldest First</option>
+                        <option value="company">Company Name</option>
+                        <option value="position">Position</option>
+                    </select>
+                </div>
+                <div class="search-group">
+                    <input type="text" id="applicationSearch" placeholder="Search applications...">
+                    <button class="btn btn-primary">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="applications-grid" id="applicationsGrid">
+                <!-- Application cards will be dynamically inserted here -->
+            </div>
+
+            <!-- Application Timeline -->
+            <div class="applications-timeline">
+                <h3>Application Timeline</h3>
+                <div class="timeline-container" id="timelineContainer">
+                    <!-- Timeline items will be dynamically inserted here -->
+                </div>
+            </div>
+
+            <!-- Interview Calendar -->
+            <div class="interview-calendar">
+                <h3>Upcoming Interviews</h3>
+                <div class="calendar-container" id="calendarContainer">
+                    <!-- Calendar items will be dynamically inserted here -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Applications Section -->
+    <section id="applications" class="section">
+        <div class="container">
+            <div class="applications-header">
+                <h2>My Applications</h2>
+                <div class="applications-stats">
+                    <div class="stat-card">
+                        <span class="stat-number" id="totalApplications">0</span>
+                        <span class="stat-label">Total Applications</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number" id="interviewRate">0%</span>
+                        <span class="stat-label">Interview Rate</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number" id="responseTime">0</span>
+                        <span class="stat-label">Avg. Response Time</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="applications-filters">
+                <div class="filter-group">
+                    <select id="applicationStatusFilter">
+                        <option value="all">All Applications</option>
+                        <option value="applied">Applied</option>
+                        <option value="in-review">In Review</option>
+                        <option value="interview">Interview Scheduled</option>
+                        <option value="offered">Offered</option>
+                        <option value="rejected">Rejected</option>
+                    </select>
+                    <select id="applicationSort">
+                        <option value="newest">Newest First</option>
+                        <option value="oldest">Oldest First</option>
+                        <option value="company">Company Name</option>
+                        <option value="position">Position</option>
+                    </select>
+                </div>
+                <div class="search-group">
+                    <input type="text" id="applicationSearch" placeholder="Search applications...">
+                    <button class="btn btn-primary">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="applications-grid" id="applicationsGrid">
+                <!-- Application cards will be dynamically inserted here -->
+            </div>
+
+            <!-- Application Timeline -->
+            <div class="applications-timeline">
+                <h3>Application Timeline</h3>
+                <div class="timeline-container" id="timelineContainer">
+                    <!-- Timeline items will be dynamically inserted here -->
+                </div>
+            </div>
+
+            <!-- Interview Calendar -->
+            <div class="interview-calendar">
+                <h3>Upcoming Interviews</h3>
+                <div class="calendar-container" id="calendarContainer">
+                    <!-- Calendar items will be dynamically inserted here -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Profile Section -->
+    <section id="profile" class="section">
+        <div class="container">
+            <div class="profile-header">
+                <h2>Your Profile</h2>
+                <div class="profile-completion">
+                    <div class="completion-bar">
+                        <div class="progress" style="width: 75%"></div>
+                    </div>
+                    <span class="completion-text">75% Complete</span>
+                </div>
+            </div>
+
+            <div class="profile-content">
+                <div class="profile-form">
+                    <form id="profileForm">
+                        <div class="form-section">
+                            <h3>Basic Information</h3>
+                            <div class="form-group">
+                                <label for="name">Full Name</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone</label>
+                                <input type="tel" id="phone" name="phone">
+                            </div>
+                            <div class="form-group">
+                                <label for="location">Location</label>
+                                <input type="text" id="location" name="location">
+                            </div>
+                        </div>
+
+                        <div class="form-section">
+                            <h3>Professional Summary</h3>
+                            <div class="form-group">
+                                <label for="summary">Summary</label>
+                                <textarea id="summary" name="summary" rows="4" placeholder="Write a brief summary of your professional background and career goals"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-section">
+                            <h3>Social Media</h3>
+                            <div class="social-links">
+                                <div class="form-group">
+                                    <label for="linkedin">
+                                        <i class="fab fa-linkedin"></i> LinkedIn
+                                    </label>
+                                    <input type="url" id="linkedin" name="linkedin" placeholder="https://linkedin.com/in/yourprofile">
+                                </div>
+                                <div class="form-group">
+                                    <label for="github">
+                                        <i class="fab fa-github"></i> GitHub
+                                    </label>
+                                    <input type="url" id="github" name="github" placeholder="https://github.com/yourusername">
+                                </div>
+                                <div class="form-group">
+                                    <label for="portfolio">
+                                        <i class="fas fa-globe"></i> Portfolio Website
+                                    </label>
+                                    <input type="url" id="portfolio" name="portfolio" placeholder="https://yourportfolio.com">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-section">
+                            <h3>Skills Analysis</h3>
+                            <div class="skills-analysis">
+                                <div class="skills-overview">
+                                    <div class="overview-card">
+                                        <h4>Skill Proficiency</h4>
+                                        <div class="proficiency-chart">
+                                            <div class="skill-bar">
+                                                <span class="skill-name">JavaScript</span>
+                                                <div class="bar-container">
+                                                    <div class="bar-fill" style="width: 85%">
+                                                        <span class="skill-level">Advanced</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="skill-bar">
+                                                <span class="skill-name">React</span>
+                                                <div class="bar-container">
+                                                    <div class="bar-fill" style="width: 75%">
+                                                        <span class="skill-level">Intermediate</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="skill-bar">
+                                                <span class="skill-name">Node.js</span>
+                                                <div class="bar-container">
+                                                    <div class="bar-fill" style="width: 70%">
+                                                        <span class="skill-level">Intermediate</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="overview-card">
+                                        <h4>Industry Relevance</h4>
+                                        <div class="industry-chart">
+                                            <div class="industry-item">
+                                                <span class="industry-name">Web Development</span>
+                                                <div class="relevance-score">95%</div>
+                                            </div>
+                                            <div class="industry-item">
+                                                <span class="industry-name">Mobile Development</span>
+                                                <div class="relevance-score">80%</div>
+                                            </div>
+                                            <div class="industry-item">
+                                                <span class="industry-name">Cloud Computing</span>
+                                                <div class="relevance-score">65%</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="skills-recommendations">
+                                    <h4>Skill Development Recommendations</h4>
+                                    <div class="recommendations-grid">
+                                        <div class="recommendation-card">
+                                            <i class="fas fa-lightbulb"></i>
+                                            <h5>High Priority</h5>
+                                            <ul>
+                                                <li>TypeScript</li>
+                                                <li>Docker</li>
+                                                <li>AWS</li>
+                                            </ul>
+                                        </div>
+                                        <div class="recommendation-card">
+                                            <i class="fas fa-clock"></i>
+                                            <h5>Medium Priority</h5>
+                                            <ul>
+                                                <li>GraphQL</li>
+                                                <li>CI/CD</li>
+                                                <li>Microservices</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-section">
+                            <h3>Work Experience</h3>
+                            <div id="experienceList">
+                                <!-- Will be populated by JavaScript -->
+                            </div>
+                            <button type="button" class="btn btn-secondary" id="addExperience">
+                                <i class="fas fa-plus"></i> Add Experience
+                            </button>
+                        </div>
+
+                        <div class="form-section">
+                            <h3>Education</h3>
+                            <div id="educationList">
+                                <!-- Will be populated by JavaScript -->
+                            </div>
+                            <button type="button" class="btn btn-secondary" id="addEducation">
+                                <i class="fas fa-plus"></i> Add Education
+                            </button>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Save Profile</button>
+                    </form>
+                </div>
+
+                <div class="profile-resume">
+                    <h3>Your Resume</h3>
+                    <div id="currentResume" class="resume-preview">
+                        <!-- Current resume will be displayed here -->
+                    </div>
+                    <form id="resumeUploadForm" action="/upload_resume" method="post" enctype="multipart/form-data" style="display:inline;">
+                        <input type="file" id="resumeFileInput" name="resumeFile" accept="application/pdf" style="display:none;" onchange="this.form.submit()">
+                        <button type="button" class="btn btn-secondary" onclick="document.getElementById('resumeFileInput').click()">Upload New Resume</button>
+                    </form>
+                    {% if upload_message %}
+                        <div class="upload-message" style="margin-top:1rem;color:green;">{{ upload_message }}</div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Upload Section -->
+    <section id="upload" class="section">
+        <div class="container">
+            <h2>Upload Your Resume</h2>
+            <div class="upload-content">
+                <div class="upload-area">
+                    <div class="upload-box">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <p>Drag and drop your resume here</p>
+                        <p class="small">or</p>
+                        <input type="file" id="resumeFile" accept=".pdf,.doc,.docx" hidden>
+                        <button class="btn btn-primary" onclick="document.getElementById('resumeFile').click()">
+                            Choose File
+                        </button>
+                    </div>
+                </div>
+                <div class="parsed-output" id="parsedOutput">
+                    <p>Parsed resume information will appear here...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Preferences Section -->
+    <section id="preferences" class="section">
+        <div class="container">
+            <h2>Set Your Job Preferences</h2>
+            <div class="preferences-content">
+                <form id="preferencesForm">
+                    <div class="preferences-grid">
+                        <!-- Location Preferences -->
+                        <div class="preference-group">
+                            <h3>Location Preferences</h3>
+                            <div class="preference-options">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="remote" checked>
+                                    <span>Remote Work</span>
+                                </label>
+                                <div class="location-inputs">
+                                    <input type="text" placeholder="Add preferred cities" id="preferredCities">
+                                    <button type="button" class="btn btn-secondary" id="addCity">Add</button>
+                                </div>
+                                <div id="selectedCities" class="selected-cities"></div>
+                            </div>
+                        </div>
+
+                        <!-- Job Type Preferences -->
+                        <div class="preference-group">
+                            <h3>Job Type</h3>
+                            <div class="preference-options">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="jobType" value="full-time" checked>
+                                    <span>Full Time</span>
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="jobType" value="part-time">
+                                    <span>Part Time</span>
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="jobType" value="contract">
+                                    <span>Contract</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Salary Expectations -->
+                        <div class="preference-group">
+                            <h3>Salary Expectations</h3>
+                            <div class="salary-range">
+                                <input type="number" id="minSalary" placeholder="Minimum Salary">
+                                <span>to</span>
+                                <input type="number" id="maxSalary" placeholder="Maximum Salary">
+                            </div>
+                        </div>
+
+                        <!-- Industry Preferences -->
+                        <div class="preference-group">
+                            <h3>Industry Preferences</h3>
+                            <div class="preference-options">
+                                <select id="industrySelect" multiple>
+                                    <option value="tech">Technology</option>
+                                    <option value="finance">Finance</option>
+                                    <option value="healthcare">Healthcare</option>
+                                    <option value="education">Education</option>
+                                    <option value="retail">Retail</option>
+                                    <option value="manufacturing">Manufacturing</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Work Culture -->
+                        <div class="preference-group">
+                            <h3>Work Culture</h3>
+                            <div class="preference-options">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="culture" value="startup">
+                                    <span>Startup</span>
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="culture" value="corporate">
+                                    <span>Corporate</span>
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="culture" value="nonprofit">
+                                    <span>Non-Profit</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Career Goals -->
+                        <div class="preference-group">
+                            <h3>Career Goals</h3>
+                            <div class="preference-options">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="goals" value="leadership">
+                                    <span>Leadership Roles</span>
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="goals" value="technical">
+                                    <span>Technical Growth</span>
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="goals" value="entrepreneurial">
+                                    <span>Entrepreneurial Experience</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Skills Development -->
+                        <div class="preference-group">
+                            <h3>Skills to Develop</h3>
+                            <div class="skills-input">
+                                <input type="text" id="skillInput" placeholder="Add skills you want to develop">
+                                <button type="button" class="btn btn-secondary" id="addSkill">Add</button>
+                            </div>
+                            <div id="selectedSkills" class="selected-skills"></div>
+                        </div>
+
+                        <!-- Benefits Preferences -->
+                        <div class="preference-group">
+                            <h3>Benefits Preferences</h3>
+                            <div class="preference-options">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="benefits" value="healthcare">
+                                    <span>Healthcare</span>
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="benefits" value="retirement">
+                                    <span>401k/Retirement</span>
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="benefits" value="flexible">
+                                    <span>Flexible Hours</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Save Preferences</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="section">
+        <div class="container">
+            <h2>Our Team</h2>
+            <div class="mission-statement">
+                <h3>Our Mission</h3>
+                <p>We're revolutionizing the job search process by leveraging AI to create meaningful connections between job seekers and employers. Our platform makes it easier to find the perfect match in today's competitive job market.</p>
+            </div>
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="member-image">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <h3>John Smith</h3>
+                    <p class="role">CEO & Founder</p>
+                    <p class="bio">Passionate about using technology to solve real-world problems.</p>
+                </div>
+                <div class="team-member">
+                    <div class="member-image">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <h3>Sarah Johnson</h3>
+                    <p class="role">Lead Developer</p>
+                    <p class="bio">Expert in AI and machine learning technologies.</p>
+                </div>
+                <div class="team-member">
+                    <div class="member-image">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <h3>Michael Chen</h3>
+                    <p class="role">UX Designer</p>
+                    <p class="bio">Focused on creating intuitive and engaging user experiences.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Customized Resumes Section -->
+    <section id="customized-resumes" class="section">
+        <div class="container">
+            <div class="resumes-header">
+                <h2>Resume Enhancer</h2>
+                <div class="resumes-stats">
+                    <div class="stat-card">
+                        <span class="stat-number" id="totalResumes">0</span>
+                        <span class="stat-label">Total Resumes</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number" id="avgMatchScore">0%</span>
+                        <span class="stat-label">Average Match Score</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="resumes-filters">
+                <div class="filter-group">
+                    <select id="resumeSort">
+                        <option value="recent">Most Recent</option>
+                        <option value="match">Best Match</option>
+                        <option value="company">Company Name</option>
+                    </select>
+                    <input type="text" id="resumeSearch" placeholder="Search resumes...">
+                </div>
+            </div>
+
+            <div class="resumes-grid" id="resumesGrid">
+                <!-- Resume cards will be dynamically inserted here -->
+            </div>
+
+            <div class="resume-customization">
+                <h3>Customize New Resume</h3>
+                <div class="customization-form">
+                    <div class="form-group">
+                        <label for="jobTitle">Job Title</label>
+                        <input type="text" id="jobTitle" placeholder="Enter job title">
+                    </div>
+                    <div class="form-group">
+                        <label for="companyName">Company Name</label>
+                        <input type="text" id="companyName" placeholder="Enter company name">
+                    </div>
+                    <div class="form-group">
+                        <label for="jobDescription">Job Description</label>
+                        <textarea id="jobDescription" rows="5" placeholder="Paste job description here"></textarea>
+                    </div>
+                    <button class="btn btn-primary" id="analyzeJob">Analyze & Customize</button>
+                </div>
+            </div>
+
+            <div class="customization-suggestions" id="customizationSuggestions">
+                <h3>Customization Suggestions</h3>
+                <div class="suggestions-content">
+                    <div class="suggestion-group">
+                        <h4>Keywords to Add</h4>
+                        <div class="keywords-list" id="keywordsToAdd"></div>
+                    </div>
+                    <div class="suggestion-group">
+                        <h4>Experience to Highlight</h4>
+                        <div class="experience-list" id="experienceToHighlight"></div>
+                    </div>
+                    <div class="suggestion-group">
+                        <h4>Skills to Emphasize</h4>
+                        <div class="skills-list" id="skillsToEmphasize"></div>
+                    </div>
+                </div>
+                <button class="btn btn-primary" id="generateResume">Generate Customized Resume</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Zenith</h3>
+                    <p>AI-powered job matching platform</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <div class="footer-links">
+                        <a href="#home">Home</a>
+                        <a href="#profile">Profile</a>
+                        <a href="#upload">Upload Resume</a>
+                        <a href="#team">Our Team</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Us</h4>
+                    <div class="footer-links">
+                        <a href="mailto:contact@jobvis.com">contact@resumeparser.com</a>
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Terms of Service</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Zenith. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html> 
