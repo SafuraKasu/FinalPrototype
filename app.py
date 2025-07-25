@@ -5,7 +5,7 @@ import openai
 
 # Set your OpenAI API key here or via environment variable
 OPENAI_API_KEY = os.environ.get('OPENAI_API_KEY', 'YOUR_OPENAI_API_KEY')
-openai.api_key = OPENAI_API_KEY
+openai.api_key = "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"
 
 # Function to extract structured data from resume text using OpenAI
 def extract_resume_info(parsed_text):
