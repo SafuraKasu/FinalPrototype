@@ -1,3 +1,4 @@
+//index
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -555,6 +556,18 @@
                     {% if upload_message %}
                         <div class="upload-message" style="margin-top:1rem;color:green;">{{ upload_message }}</div>
                     {% endif %}
+                    {% if request.args.get('parsed_resume') %}
+                        <div class="resume-preview" style="margin-top:1rem; white-space:pre-wrap; background:#f9f9f9; border:1px solid #ccc; padding:1rem;">
+                            <h4>Parsed Resume Text:</h4>
+                            <div>{{ request.args.get('parsed_resume') }}</div>
+                        </div>
+                    {% endif %}
+                    {% if request.args.get('resume_info') %}
+                        <div class="resume-preview" style="margin-top:1rem; white-space:pre-wrap; background:#e6f7ff; border:1px solid #0077b6; padding:1rem;">
+                            <h4>AI-Extracted Resume Information:</h4>
+                            <div>{{ request.args.get('resume_info') }}</div>
+                        </div>
+                    {% endif %}
                 </div>
             </div>
         </div>
@@ -866,4 +879,4 @@
 
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>
-</html> 
+</html>

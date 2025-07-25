@@ -1,3 +1,5 @@
+// script
+
 document.addEventListener('DOMContentLoaded', () => {
     // Navigation
     const sections = document.querySelectorAll('.section');
@@ -1023,4 +1025,4 @@ document.addEventListener('DOMContentLoaded', () => {
         // Load resumes
         loadResumes();
     });
-}); 
+});
